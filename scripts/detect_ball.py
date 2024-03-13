@@ -27,7 +27,7 @@ def detect_ball(cv_image):
     mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
     # Remove background noise
-    #this is a pretty tight fit but works for the scenario
+    # This is a pretty tight fit but works for the scenario
     roi = np.zeros(cv_image.shape[:2], dtype=np.uint8)
     cv2.rectangle(roi, (350, 200), (cv_image.shape[1] - 350, cv_image.shape[0] - 200), 255, -1)
     masked_image = cv2.bitwise_and(mask, mask, mask=roi)
