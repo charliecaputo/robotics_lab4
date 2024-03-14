@@ -19,18 +19,18 @@ def image_callback(msg):
     publish_image(processed_image)
 
 def detect_ball(cv_image):
-    # Convert RGB image to HSV
+    # Convert RGB image to HSV Using notation online
     hsv_image = cv2.cvtColor(cv_image, cv2.COLOR_RGB2HSV)
 
     # Define range of ball color in HSV
-    lower_blue = np.array([25,20,1])
+    lower_blue = np.array([5,5,5])
     upper_blue = np.array([60,255,255])
 
     # Threshold the HSV image to get only the balls color
     mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
     # Remove background noise
-    # This is a pretty tight fit but works for the scenario
+    # This is a tight fit but works for the scenario
     roi = np.zeros(cv_image.shape[:2], dtype=np.uint8)
     cv2.rectangle(roi, (350, 200), (cv_image.shape[1] - 350, cv_image.shape[0] - 200), 255, -1)
     
