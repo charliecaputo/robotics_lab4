@@ -23,7 +23,7 @@ def detect_ball(cv_image):
     hsv_image = cv2.cvtColor(cv_image, cv2.COLOR_RGB2HSV)
 
     # Define range of ball color in HSV
-    lower_blue = np.array([5,5,5])
+    lower_blue = np.array([10,100,1])##20,70,1
     upper_blue = np.array([60,255,255])
 
     # Threshold the HSV image to get only the balls color
